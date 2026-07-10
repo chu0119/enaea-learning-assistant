@@ -6,7 +6,7 @@
 [![GitHub Issues](https://img.shields.io/github/issues/chu0119/enaea-learning-assistant.svg)](https://github.com/chu0119/enaea-learning-assistant/issues)
 [![GitHub Forks](https://img.shields.io/github/forks/chu0119/enaea-learning-assistant.svg)](https://github.com/chu0119/enaea-learning-assistant/network/members)
 
-一款专为在线学习平台设计的浏览器辅助工具，帮助用户优化学习体验，提升课程学习效率。
+一款专为在线学习平台（学习公社）设计的浏览器辅助工具，帮助用户优化学习体验，提升课程学习效率。
 
 ## 📦 项目地址
 
