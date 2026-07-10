@@ -24,33 +24,74 @@
 ## 安装使用
 
 ### 前置要求
-- 浏览器：Chrome / Firefox / Edge
+
+- 浏览器：Chrome / Firefox / Edge / Safari
 - 插件：[Tampermonkey](https://www.tampermonkey.net/) 或 [Greasemonkey](https://addons.mozilla.org/firefox/addon/greasemonkey/)
 
-### 安装步骤
+### 方法一：从 Greasy Fork 安装（推荐）
+
+1. 访问 [Greasy Fork](https://greasyfork.org/) 搜索 "ENAEA Learning Assistant"
+2. 点击 "安装此脚本"
+3. 确认安装即可
+
+### 方法二：手动安装
 
 1. 安装 Tampermonkey 浏览器插件
-2. 点击插件图标，选择"添加新脚本"
+   - Chrome: [Chrome Web Store](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+   - Firefox: [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/tampermonkey/)
+   - Edge: [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/tampermonkey/iikmkjmpaadaobahmlepeloendndfphd)
+
+2. 点击 Tampermonkey 图标，选择 "添加新脚本"
+
 3. 将 `enaea-auto-player.js` 的内容粘贴到编辑器中
-4. 保存脚本即可生效
+
+4. 按 `Ctrl + S` 保存脚本
 
 ### 使用方法
 
-1. 登录在线学习平台
-2. 进入课程页面
+1. 登录在线学习平台 (study.enaea.edu.cn)
+2. 进入课程列表或课程详情页面
 3. 脚本将自动运行，无需额外操作
+4. 脚本图标会在工具栏显示，表示已激活
+
+### 功能说明
+
+| 页面类型 | 自动执行的操作 |
+|---------|---------------|
+| 课程列表页 | 自动点击"进入学习"按钮 |
+| 课程首页 | 自动选择未完成的课程模块 |
+| 课程详情页 | 自动找到并打开未完成的课程 |
+| 视频播放页 | 自动播放、调节速度、处理弹窗 |
 
 ## 配置说明
 
-脚本支持通过浏览器控制台进行配置：
+### 默认配置
+
+| 配置项 | 默认值 | 说明 |
+|-------|--------|------|
+| `speed` | 4 | 视频播放速度（倍速） |
+| `autoMute` | true | 是否自动静音 |
+| `checkInterval` | 3000 | 检查间隔（毫秒） |
+| `debug` | true | 是否开启调试日志 |
+
+### 自定义配置
+
+在浏览器控制台中执行以下代码：
 
 ```javascript
-// 调整播放速度（默认4倍速）
+// 调整播放速度（支持 0.5-16 倍速）
 localStorage.setItem('enaea_speed', '2');
 
 // 关闭自动静音
 localStorage.setItem('enaea_auto_mute', 'false');
+
+// 开启/关闭调试日志（默认开启）
+// 在脚本代码中修改 CONFIG.debug 的值
 ```
+
+### 配置生效
+
+修改配置后，刷新页面即可生效。
 
 ## 技术架构
 
@@ -94,6 +135,13 @@ localStorage.setItem('enaea_auto_mute', 'false');
 3. 提交你的更改 (`git commit -m 'Add some AmazingFeature'`)
 4. 推送到分支 (`git push origin feature/AmazingFeature`)
 5. 打开一个 Pull Request
+
+### 开发指南
+
+1. 确保代码风格一致
+2. 添加必要的注释
+3. 测试你的更改
+4. 更新相关文档
 
 ## 许可证
 
