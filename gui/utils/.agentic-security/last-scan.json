@@ -1,21 +1,21 @@
 {
-  "scanId": "fba5fc35-0e38-45ca-acd9-7d5a4d9ba66c",
-  "startedAt": "2026-07-10T07:04:49.868Z",
-  "durationMs": 241,
+  "scanId": "03fe8640-047b-48f8-a0e8-6a37d9fd451c",
+  "startedAt": "2026-07-10T07:01:52.777Z",
+  "durationMs": 94,
   "scanned": {
-    "files": 5,
+    "files": 2,
     "lines": 0
   },
   "findings": [
     {
-      "id": "gui/utils/helpers.js:98:143:Path_Traversal",
+      "id": "helpers.js:98:143:Path_Traversal",
       "kind": "sast",
       "severity": "high",
       "vuln": "Path Traversal",
       "cwe": "CWE-22",
       "owaspLlm": null,
       "stride": "Information Disclosure",
-      "file": "gui/utils/helpers.js",
+      "file": "helpers.js",
       "line": 98,
       "snippet": "const url = window.location.href;",
       "fix": null,
@@ -100,9 +100,9 @@
         "dominantDriver": "legal counsel",
         "comparable": "Snyk 2022 path-traversal disclosure → CDN cache poisoning + .env exfil",
         "confidence": "low",
-        "narrative": "Path Traversal on `gui/utils/helpers.js:98` could expose configuration / internal data. Context: general SaaS / no specific regulatory exposure. Estimated cost: best $23k · likely $136k · worst $775k. Dominant driver: legal counsel. Comparable: Snyk 2022 path-traversal disclosure → CDN cache poisoning + .env exfil."
+        "narrative": "Path Traversal on `helpers.js:98` could expose configuration / internal data. Context: general SaaS / no specific regulatory exposure. Estimated cost: best $23k · likely $136k · worst $775k. Dominant driver: legal counsel. Comparable: Snyk 2022 path-traversal disclosure → CDN cache poisoning + .env exfil."
       },
-      "stableId": "b3f307e094e54e8d",
+      "stableId": "9524570c90e19801",
       "confidenceTier": "low",
       "exploitability": 0.45,
       "exploitabilityTier": "medium",
@@ -263,13 +263,13 @@
       }
     },
     {
-      "id": "f134f0ccdf2a4540",
+      "id": "2b6cb89e1922cc53",
       "kind": "logic",
       "severity": "medium",
       "vuln": "Weak Randomness",
       "cwe": "CWE-330",
       "stride": "Spoofing",
-      "file": "gui/utils/helpers.js",
+      "file": "helpers.js",
       "line": 80,
       "snippet": "return Date.now().toString(36) + Math.random().toString(36).substr(2);",
       "fix": {
@@ -340,190 +340,10 @@
         "dominantDriver": "legal counsel",
         "comparable": "Generic finding — likely cost driven by user count + jurisdiction stack",
         "confidence": "low",
-        "narrative": "Weak Randomness on `gui/utils/helpers.js:80` could expose configuration / internal data. Context: general SaaS / no specific regulatory exposure. Estimated cost: best $23k · likely $136k · worst $775k. Dominant driver: legal counsel. Comparable: Generic finding — likely cost driven by user count + jurisdiction stack."
+        "narrative": "Weak Randomness on `helpers.js:80` could expose configuration / internal data. Context: general SaaS / no specific regulatory exposure. Estimated cost: best $23k · likely $136k · worst $775k. Dominant driver: legal counsel. Comparable: Generic finding — likely cost driven by user count + jurisdiction stack."
       },
       "parser": "LOGIC",
       "family": null
-    },
-    {
-      "id": "concurrency:fire-forget:gui/app.js:746",
-      "kind": "sast",
-      "severity": "low",
-      "vuln": "Concurrency: fire-and-forget async call in copyLogs() — result not awaited",
-      "cwe": null,
-      "owaspLlm": null,
-      "stride": null,
-      "file": "gui/app.js",
-      "line": 746,
-      "snippet": "",
-      "fix": null,
-      "reachable": null,
-      "triage": null,
-      "dataClasses": [],
-      "chain": null,
-      "confidence": 0.4,
-      "toxicity": 3,
-      "toxicityFactors": [],
-      "toxicityLabel": "Low",
-      "sources": null,
-      "epssScore": null,
-      "epssPercentile": null,
-      "epssCve": null,
-      "exploitedNow": false,
-      "tags": null,
-      "blastRadius": {
-        "scope": "all-users",
-        "dataAtRisk": [
-          "config"
-        ],
-        "userCount": 50,
-        "industry": "generic",
-        "jurisdictions": [],
-        "controlsApplied": [],
-        "dollarBest": 23250,
-        "dollarLikely": 136250,
-        "dollarWorst": 775000,
-        "dollarLow": 23250,
-        "dollarHigh": 775000,
-        "components": {
-          "incidentResponse": {
-            "low": 8000,
-            "likely": 50000,
-            "high": 250000
-          },
-          "legal": {
-            "low": 10000,
-            "likely": 75000,
-            "high": 500000
-          },
-          "crisisPR": {
-            "low": 0,
-            "likely": 0,
-            "high": 0
-          },
-          "notification": {
-            "low": 5000,
-            "likely": 10000,
-            "high": 15000
-          },
-          "creditMonitoring": {
-            "low": 0,
-            "likely": 0,
-            "high": 0
-          },
-          "regulatoryFines": {
-            "low": 0,
-            "likely": 0,
-            "high": 0
-          },
-          "directDamage": {
-            "low": 250,
-            "likely": 1250,
-            "high": 10000
-          },
-          "classAction": {
-            "low": 0,
-            "likely": 0,
-            "high": 0
-          },
-          "lostBusiness": {
-            "low": 0,
-            "likely": 0,
-            "high": 0
-          }
-        },
-        "dominantDriver": "legal counsel",
-        "comparable": "Generic finding — likely cost driven by user count + jurisdiction stack",
-        "confidence": "low",
-        "narrative": "Concurrency: fire-and-forget async call in copyLogs() — result not awaited on `gui/app.js:746` could expose configuration / internal data. Context: general SaaS / no specific regulatory exposure. Estimated cost: best $23k · likely $136k · worst $775k. Dominant driver: legal counsel. Comparable: Generic finding — likely cost driven by user count + jurisdiction stack."
-      },
-      "stableId": null,
-      "confidenceTier": null,
-      "exploitability": null,
-      "exploitabilityTier": null,
-      "exploitabilityFactors": null,
-      "clusterSize": null,
-      "unreachable": false,
-      "validator_verdict": "unvalidated",
-      "llm_confidence": null,
-      "unvalidated": true,
-      "cross_language": false,
-      "family": "concurrency-bug",
-      "parser": null,
-      "_unsigned": false,
-      "_passThroughSigning": false,
-      "signatureStatus": "verified",
-      "regression_test": null,
-      "poc": null,
-      "calibrated_confidence": null,
-      "calibrated_confidence_ci": null,
-      "calibrated_n": 0,
-      "calibration_reason": null,
-      "verifier_verdict": null,
-      "verifier_reason": null,
-      "verifier_runner": null,
-      "narration": null,
-      "mitigationVerdict": null,
-      "mitigationsApplied": null,
-      "mitigatedByWaf": false,
-      "wafRuleId": null,
-      "mitigatedByAuth": false,
-      "authMechanism": null,
-      "mitigatedByNetwork": false,
-      "networkExposure": null,
-      "featureFlag": null,
-      "featureFlagState": null,
-      "featureFlagRollout": null,
-      "exposedInProd": false,
-      "unreachableInProd": false,
-      "coldPath": false,
-      "hotPath": false,
-      "prodRequestCount": null,
-      "crownJewelScore": null,
-      "crownJewelTier": null,
-      "crownJewelFactors": null,
-      "cloneClusterId": null,
-      "cloneClusterSize": null,
-      "provenance": null,
-      "provenanceScore": null,
-      "typeNarrowed": null,
-      "strideCategory": null,
-      "personaScores": null,
-      "personaTopTwo": null,
-      "personaMaxName": null,
-      "personaMaxScore": null,
-      "reverseExposure": null,
-      "specMined": null,
-      "whyFired": {
-        "detector": "sast/concurrency-bug",
-        "ruleId": "concurrency-bug",
-        "parser": "pattern",
-        "evidence": {
-          "sinkSnippet": null,
-          "sourceSnippet": null,
-          "pathSteps": [],
-          "sanitizers": [],
-          "guards": []
-        },
-        "considered": {
-          "suppressionsApplied": [],
-          "suppressionsSkipped": [],
-          "reachabilityFilter": "unaffected",
-          "clusterCollapsed": false,
-          "typeNarrowed": false,
-          "crownJewelTier": null,
-          "mitigationVerdict": null
-        },
-        "scanner": {
-          "rulesetVersion": null,
-          "packHash": null,
-          "modelId": null
-        }
-      },
-      "adversaryTranscript": null,
-      "predictedBountyUsd": null,
-      "bountyConfidence": null,
-      "attackPlaybook": null
     }
   ],
   "bundles": [],
@@ -547,7 +367,7 @@
   "_v3": {
     "counterfactual": {
       "spofControls": [],
-      "controlsDetected": 73
+      "controlsDetected": 1
     },
     "threatModel": {
       "summary": {

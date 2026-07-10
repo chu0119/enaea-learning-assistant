@@ -500,4 +500,29 @@
     log('ENAEA Learning Assistant v9.0 已启动！', 'success');
     log('功能: 视频播放优化 | 智能导航 | 弹窗处理 | 进度追踪', 'info');
 
+    // ==================== 加载 GUI ====================
+    function loadGUI() {
+        // 只在主域名加载 GUI
+        if (!window.location.hostname.includes('enaea.edu.cn')) return;
+
+        // 检查是否禁用了 GUI
+        if (localStorage.getItem('enaea_gui_disabled') === 'true') return;
+
+        // 加载 GUI 样式
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://raw.githubusercontent.com/chu0119/enaea-learning-assistant/master/gui/styles.css';
+        document.head.appendChild(link);
+
+        // 加载 GUI 脚本
+        const script = document.createElement('script');
+        script.src = 'https://raw.githubusercontent.com/chu0119/enaea-learning-assistant/master/gui/app.js';
+        document.head.appendChild(script);
+
+        log('GUI 面板加载中...', 'info');
+    }
+
+    // 延迟加载 GUI
+    setTimeout(loadGUI, 2000);
+
 })();

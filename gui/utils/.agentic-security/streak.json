@@ -1,14 +1,14 @@
 {
-  "firstScanDate": "2026-07-10T06:36:32.532Z",
-  "lastScanDate": "2026-07-10T07:04:50.138Z",
-  "totalScans": 27,
+  "firstScanDate": "2026-07-10T07:01:43.685Z",
+  "lastScanDate": "2026-07-10T07:01:52.890Z",
+  "totalScans": 2,
   "daysCleanCritical": 1,
   "lastCleanDate": "2026-07-10",
   "lastCriticalDate": null,
   "hasEverHadCritical": false,
   "bestDaysCleanCritical": 1,
   "totalFindingsAtFirstScan": 0,
-  "totalFindingsAtLastScan": 3,
+  "totalFindingsAtLastScan": 2,
   "totalFixesInferred": 0,
   "lastGrade": "A-",
   "bestGrade": "A+",
@@ -16,8 +16,7 @@
   "achievements": [
     "first-scan",
     "grade-a",
-    "grade-a-plus",
-    "scan-veteran-25"
+    "grade-a-plus"
   ],
-  "previousGrade": "A-"
+  "previousGrade": "A+"
 }

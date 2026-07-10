@@ -1,0 +1,681 @@
+/* ENAEA Learning Assistant GUI Styles */
+
+:root {
+  /* 主色调 */
+  --primary-color: #4A90D9;
+  --primary-hover: #357ABD;
+  --primary-active: #2E6BA6;
+
+  /* 背景色 */
+  --bg-color: #FFFFFF;
+  --bg-secondary: #F5F7FA;
+  --bg-tertiary: #EDF2F7;
+
+  /* 文字色 */
+  --text-color: #2D3748;
+  --text-secondary: #718096;
+  --text-light: #A0AEC0;
+
+  /* 状态色 */
+  --success-color: #48BB78;
+  --success-bg: #F0FFF4;
+  --warning-color: #ED8936;
+  --warning-bg: #FFFAF0;
+  --error-color: #F56565;
+  --error-bg: #FFF5F5;
+  --info-color: #4299E1;
+  --info-bg: #EBF8FF;
+
+  /* 边框色 */
+  --border-color: #E2E8F0;
+  --border-hover: #CBD5E0;
+
+  /* 阴影 */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /* 圆角 */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* 间距 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+
+  /* 过渡 */
+  --transition-fast: 150ms ease;
+  --transition-normal: 200ms ease;
+}
+
+/* 面板容器 */
+.enaea-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 380px;
+  max-height: 80vh;
+  background: var(--bg-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-color);
+  z-index: 999999;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  font-size: 14px;
+  color: var(--text-color);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+}
+
+.enaea-panel.minimized {
+  width: 200px;
+  max-height: none;
+}
+
+.enaea-panel.hidden {
+  display: none;
+}
+
+/* 标题栏 */
+.enaea-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md);
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+  color: white;
+  cursor: move;
+  user-select: none;
+}
+
+.enaea-panel-title {
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.enaea-panel-title-icon {
+  font-size: 16px;
+}
+
+.enaea-panel-buttons {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.enaea-panel-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: background var(--transition-fast);
+}
+
+.enaea-panel-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* 状态栏 */
+.enaea-status-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  font-size: 12px;
+}
+
+.enaea-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.enaea-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success-color);
+}
+
+.enaea-status-dot.running {
+  background: var(--success-color);
+  animation: pulse 2s infinite;
+}
+
+.enaea-status-dot.paused {
+  background: var(--warning-color);
+}
+
+.enaea-status-dot.stopped {
+  background: var(--error-color);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.enaea-status-text {
+  color: var(--text-secondary);
+}
+
+/* 内容区域 */
+.enaea-panel-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* 卡片样式 */
+.enaea-card {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+}
+
+.enaea-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+.enaea-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.enaea-card-title-icon {
+  font-size: 14px;
+}
+
+/* 视频控制区 */
+.enaea-video-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.enaea-control-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.enaea-control-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  color: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  transition: all var(--transition-fast);
+}
+
+.enaea-control-btn:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+.enaea-control-btn.primary {
+  width: 48px;
+  height: 48px;
+  background: var(--primary-color);
+  color: white;
+}
+
+.enaea-control-btn.primary:hover {
+  background: var(--primary-hover);
+}
+
+/* 速度控制 */
+.enaea-speed-control {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.enaea-speed-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  min-width: 30px;
+}
+
+.enaea-speed-buttons {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.enaea-speed-btn {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.enaea-speed-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.enaea-speed-btn.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+/* 音量控制 */
+.enaea-volume-control {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.enaea-volume-slider {
+  flex: 1;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--border-color);
+  border-radius: 2px;
+  outline: none;
+}
+
+.enaea-volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+}
+
+.enaea-volume-value {
+  font-size: 12px;
+  color: var(--text-secondary);
+  min-width: 35px;
+  text-align: right;
+}
+
+/* 进度区 */
+.enaea-progress-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.enaea-progress-bar-container {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  height: 8px;
+  overflow: hidden;
+}
+
+.enaea-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--success-color));
+  border-radius: var(--radius-sm);
+  transition: width var(--transition-normal);
+}
+
+.enaea-progress-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.enaea-current-course {
+  font-size: 13px;
+  color: var(--text-color);
+  margin-top: var(--spacing-sm);
+}
+
+.enaea-course-stats {
+  display: flex;
+  gap: var(--spacing-md);
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: var(--spacing-xs);
+}
+
+/* 模块列表 */
+.enaea-module-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.enaea-module-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.enaea-module-item:hover {
+  background: var(--bg-secondary);
+}
+
+.enaea-module-icon {
+  font-size: 14px;
+}
+
+.enaea-module-icon.completed {
+  color: var(--success-color);
+}
+
+.enaea-module-icon.in-progress {
+  color: var(--info-color);
+}
+
+.enaea-module-icon.pending {
+  color: var(--text-light);
+}
+
+.enaea-module-name {
+  flex: 1;
+  font-size: 12px;
+  color: var(--text-color);
+}
+
+.enaea-module-progress {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+/* 设置区 */
+.enaea-settings {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.enaea-settings-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.enaea-setting-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.enaea-toggle {
+  position: relative;
+  width: 36px;
+  height: 20px;
+}
+
+.enaea-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.enaea-toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--border-color);
+  transition: var(--transition-fast);
+  border-radius: 10px;
+}
+
+.enaea-toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: var(--transition-fast);
+  border-radius: 50%;
+}
+
+.enaea-toggle input:checked + .enaea-toggle-slider {
+  background-color: var(--primary-color);
+}
+
+.enaea-toggle input:checked + .enaea-toggle-slider:before {
+  transform: translateX(16px);
+}
+
+.enaea-setting-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.enaea-select {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.enaea-select:hover {
+  border-color: var(--primary-color);
+}
+
+/* 操作区 */
+.enaea-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.enaea-action-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.enaea-action-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.enaea-action-btn.danger:hover {
+  border-color: var(--error-color);
+  color: var(--error-color);
+}
+
+/* 日志区 */
+.enaea-log-section {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.enaea-log-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.enaea-log-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.enaea-log-buttons {
+  display: flex;
+  gap: var(--spacing-xs);
+}
+
+.enaea-log-btn {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.enaea-log-btn:hover {
+  background: var(--border-color);
+  color: var(--text-color);
+}
+
+.enaea-log-content {
+  height: 120px;
+  overflow-y: auto;
+  padding: var(--spacing-sm);
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.enaea-log-entry {
+  display: flex;
+  gap: var(--spacing-sm);
+  padding: 2px 0;
+}
+
+.enaea-log-time {
+  color: var(--text-light);
+  white-space: nowrap;
+}
+
+.enaea-log-icon {
+  white-space: nowrap;
+}
+
+.enaea-log-message {
+  color: var(--text-color);
+  word-break: break-all;
+}
+
+.enaea-log-entry.error .enaea-log-message {
+  color: var(--error-color);
+}
+
+.enaea-log-entry.warning .enaea-log-message {
+  color: var(--warning-color);
+}
+
+.enaea-log-entry.success .enaea-log-message {
+  color: var(--success-color);
+}
+
+/* 空状态 */
+.enaea-empty-state {
+  text-align: center;
+  padding: var(--spacing-lg);
+  color: var(--text-light);
+  font-size: 12px;
+}
+
+/* 滚动条样式 */
+.enaea-panel-content::-webkit-scrollbar,
+.enaea-log-content::-webkit-scrollbar,
+.enaea-module-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.enaea-panel-content::-webkit-scrollbar-track,
+.enaea-log-content::-webkit-scrollbar-track,
+.enaea-module-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.enaea-panel-content::-webkit-scrollbar-thumb,
+.enaea-log-content::-webkit-scrollbar-thumb,
+.enaea-module-list::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.enaea-panel-content::-webkit-scrollbar-thumb:hover,
+.enaea-log-content::-webkit-scrollbar-thumb:hover,
+.enaea-module-list::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
+
+/* 动画 */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.enaea-panel {
+  animation: slideIn 0.3s ease;
+}
+
+/* 响应式 */
+@media (max-width: 480px) {
+  .enaea-panel {
+    width: calc(100% - 20px);
+    right: 10px;
+    top: 10px;
+  }
+}
