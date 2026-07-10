@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         ENAEA Learning Assistant
 // @namespace    https://github.com/chu0119/enaea-learning-assistant
-// @version      9.0
-// @description  Online learning platform assistant - streamlines course navigation and video playback
+// @version      9.1
+// @description  Online learning platform assistant - streamlines course navigation and video playback. GUI version available at enaea-gui.js
 // @author       Learning Tech
 // @match        https://study.enaea.edu.cn/*
 // @match        https://*.ttcdw.cn/*

@@ -1,7 +1,7 @@
 {
-  "scanId": "fba5fc35-0e38-45ca-acd9-7d5a4d9ba66c",
-  "startedAt": "2026-07-10T07:04:49.868Z",
-  "durationMs": 241,
+  "scanId": "f8bfa94f-ccb4-453a-b0f7-8dbc7abbcb94",
+  "startedAt": "2026-07-10T07:06:54.053Z",
+  "durationMs": 225,
   "scanned": {
     "files": 5,
     "lines": 0

@@ -310,5 +310,19 @@
       "concurrency:fire-forget:gui/app.js:746",
       "gui/utils/helpers.js:98:143:Path_Traversal"
     ]
+  },
+  {
+    "timestamp": "2026-07-10T07:06:54.277Z",
+    "label": "scan",
+    "total": 2,
+    "critical": 0,
+    "high": 1,
+    "medium": 0,
+    "low": 1,
+    "kev": 0,
+    "ids": [
+      "concurrency:fire-forget:gui/app.js:746",
+      "gui/utils/helpers.js:98:143:Path_Traversal"
+    ]
   }
 ]
