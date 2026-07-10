@@ -159,6 +159,10 @@ localStorage.setItem('enaea_auto_mute', 'false');
 
 请查看 [CONTRIBUTING.md](CONTRIBUTING.md) 了解详细的开发指南。
 
+### 发布到 Greasy Fork
+
+请查看 [PUBLISHING.md](PUBLISHING.md) 了解如何将脚本发布到 Greasy Fork。
+
 ### 问题反馈
 
 - **Bug 报告**: 使用 [Bug Report](https://github.com/chu0119/enaea-learning-assistant/issues/new?template=bug_report.md) 模板
