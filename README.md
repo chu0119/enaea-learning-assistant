@@ -13,6 +13,8 @@
 - **GitHub**: https://github.com/chu0119/enaea-learning-assistant
 - **Greasy Fork**: https://greasyfork.org/scripts/XXXXX (待发布)
 
+> 📌 **安装提示**：推荐从 Greasy Fork 安装，可自动更新。
+
 ## 功能特性
 
 ### 🎬 视频学习优化
