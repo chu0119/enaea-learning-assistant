@@ -2,8 +2,16 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Tampermonkey](https://img.shields.io/badge/Tampermonkey-✓-green.svg)](https://www.tampermonkey.net/)
+[![GitHub Stars](https://img.shields.io/github/stars/chu0119/enaea-learning-assistant.svg)](https://github.com/chu0119/enaea-learning-assistant/stargazers)
+[![GitHub Issues](https://img.shields.io/github/issues/chu0119/enaea-learning-assistant.svg)](https://github.com/chu0119/enaea-learning-assistant/issues)
+[![GitHub Forks](https://img.shields.io/github/forks/chu0119/enaea-learning-assistant.svg)](https://github.com/chu0119/enaea-learning-assistant/network/members)
 
 一款专为在线学习平台设计的浏览器辅助工具，帮助用户优化学习体验，提升课程学习效率。
+
+## 📦 项目地址
+
+- **GitHub**: https://github.com/chu0119/enaea-learning-assistant
+- **Greasy Fork**: https://greasyfork.org/scripts/XXXXX (待发布)
 
 ## 功能特性
 
@@ -30,11 +38,20 @@
 
 ### 方法一：从 Greasy Fork 安装（推荐）
 
-1. 访问 [Greasy Fork](https://greasyfork.org/) 搜索 "ENAEA Learning Assistant"
+1. 访问 [Greasy Fork](https://greasyfork.org/scripts/XXXXX)
 2. 点击 "安装此脚本"
 3. 确认安装即可
 
-### 方法二：手动安装
+> 💡 **提示**：Greasy Fork 是最安全的安装方式，脚本会自动更新。
+
+### 方法二：从 GitHub 安装
+
+1. 访问 [GitHub 仓库](https://github.com/chu0119/enaea-learning-assistant)
+2. 点击 `enaea-auto-player.js` 文件
+3. 点击 "Raw" 按钮查看原始代码
+4. 复制全部代码
+
+### 方法三：手动安装
 
 1. 安装 Tampermonkey 浏览器插件
    - Chrome: [Chrome Web Store](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
@@ -46,6 +63,8 @@
 3. 将 `enaea-auto-player.js` 的内容粘贴到编辑器中
 
 4. 按 `Ctrl + S` 保存脚本
+
+> ⚠️ **注意**：手动安装的脚本不会自动更新，需要手动下载最新版本。
 
 ### 使用方法
 
@@ -138,10 +157,13 @@ localStorage.setItem('enaea_auto_mute', 'false');
 
 ### 开发指南
 
-1. 确保代码风格一致
-2. 添加必要的注释
-3. 测试你的更改
-4. 更新相关文档
+请查看 [CONTRIBUTING.md](CONTRIBUTING.md) 了解详细的开发指南。
+
+### 问题反馈
+
+- **Bug 报告**: 使用 [Bug Report](https://github.com/chu0119/enaea-learning-assistant/issues/new?template=bug_report.md) 模板
+- **功能建议**: 使用 [Feature Request](https://github.com/chu0119/enaea-learning-assistant/issues/new?template=feature_request.md) 模板
+- **问题咨询**: 使用 [Question](https://github.com/chu0119/enaea-learning-assistant/issues/new?template=question.md) 模板
 
 ## 许可证
 

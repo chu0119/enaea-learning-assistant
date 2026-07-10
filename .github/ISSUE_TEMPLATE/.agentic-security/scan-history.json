@@ -1,0 +1,46 @@
+[
+  {
+    "timestamp": "2026-07-10T06:40:59.448Z",
+    "label": "scan",
+    "total": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "kev": 0,
+    "ids": []
+  },
+  {
+    "timestamp": "2026-07-10T06:41:01.038Z",
+    "label": "scan",
+    "total": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "kev": 0,
+    "ids": []
+  },
+  {
+    "timestamp": "2026-07-10T06:41:02.743Z",
+    "label": "scan",
+    "total": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "kev": 0,
+    "ids": []
+  },
+  {
+    "timestamp": "2026-07-10T06:41:04.830Z",
+    "label": "scan",
+    "total": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "kev": 0,
+    "ids": []
+  }
+]
