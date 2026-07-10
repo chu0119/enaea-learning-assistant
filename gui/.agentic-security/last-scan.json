@@ -1,0 +1,261 @@
+{
+  "scanId": "499090a7-7c9d-4666-924a-b5fc7ee8247b",
+  "startedAt": "2026-07-10T07:01:32.468Z",
+  "durationMs": 123,
+  "scanned": {
+    "files": 1,
+    "lines": 0
+  },
+  "findings": [
+    {
+      "id": "concurrency:fire-forget:app.js:731",
+      "kind": "sast",
+      "severity": "low",
+      "vuln": "Concurrency: fire-and-forget async call in copyLogs() — result not awaited",
+      "cwe": null,
+      "owaspLlm": null,
+      "stride": null,
+      "file": "app.js",
+      "line": 731,
+      "snippet": "",
+      "fix": null,
+      "reachable": null,
+      "triage": null,
+      "dataClasses": [],
+      "chain": null,
+      "confidence": 0.4,
+      "toxicity": 3,
+      "toxicityFactors": [],
+      "toxicityLabel": "Low",
+      "sources": null,
+      "epssScore": null,
+      "epssPercentile": null,
+      "epssCve": null,
+      "exploitedNow": false,
+      "tags": null,
+      "blastRadius": {
+        "scope": "all-users",
+        "dataAtRisk": [
+          "config"
+        ],
+        "userCount": 50,
+        "industry": "generic",
+        "jurisdictions": [],
+        "controlsApplied": [],
+        "dollarBest": 23250,
+        "dollarLikely": 136250,
+        "dollarWorst": 775000,
+        "dollarLow": 23250,
+        "dollarHigh": 775000,
+        "components": {
+          "incidentResponse": {
+            "low": 8000,
+            "likely": 50000,
+            "high": 250000
+          },
+          "legal": {
+            "low": 10000,
+            "likely": 75000,
+            "high": 500000
+          },
+          "crisisPR": {
+            "low": 0,
+            "likely": 0,
+            "high": 0
+          },
+          "notification": {
+            "low": 5000,
+            "likely": 10000,
+            "high": 15000
+          },
+          "creditMonitoring": {
+            "low": 0,
+            "likely": 0,
+            "high": 0
+          },
+          "regulatoryFines": {
+            "low": 0,
+            "likely": 0,
+            "high": 0
+          },
+          "directDamage": {
+            "low": 250,
+            "likely": 1250,
+            "high": 10000
+          },
+          "classAction": {
+            "low": 0,
+            "likely": 0,
+            "high": 0
+          },
+          "lostBusiness": {
+            "low": 0,
+            "likely": 0,
+            "high": 0
+          }
+        },
+        "dominantDriver": "legal counsel",
+        "comparable": "Generic finding — likely cost driven by user count + jurisdiction stack",
+        "confidence": "low",
+        "narrative": "Concurrency: fire-and-forget async call in copyLogs() — result not awaited on `app.js:731` could expose configuration / internal data. Context: general SaaS / no specific regulatory exposure. Estimated cost: best $23k · likely $136k · worst $775k. Dominant driver: legal counsel. Comparable: Generic finding — likely cost driven by user count + jurisdiction stack."
+      },
+      "stableId": null,
+      "confidenceTier": null,
+      "exploitability": null,
+      "exploitabilityTier": null,
+      "exploitabilityFactors": null,
+      "clusterSize": null,
+      "unreachable": false,
+      "validator_verdict": "unvalidated",
+      "llm_confidence": null,
+      "unvalidated": true,
+      "cross_language": false,
+      "family": "concurrency-bug",
+      "parser": null,
+      "_unsigned": false,
+      "_passThroughSigning": false,
+      "signatureStatus": "verified",
+      "regression_test": null,
+      "poc": null,
+      "calibrated_confidence": null,
+      "calibrated_confidence_ci": null,
+      "calibrated_n": 0,
+      "calibration_reason": null,
+      "verifier_verdict": null,
+      "verifier_reason": null,
+      "verifier_runner": null,
+      "narration": null,
+      "mitigationVerdict": null,
+      "mitigationsApplied": null,
+      "mitigatedByWaf": false,
+      "wafRuleId": null,
+      "mitigatedByAuth": false,
+      "authMechanism": null,
+      "mitigatedByNetwork": false,
+      "networkExposure": null,
+      "featureFlag": null,
+      "featureFlagState": null,
+      "featureFlagRollout": null,
+      "exposedInProd": false,
+      "unreachableInProd": false,
+      "coldPath": false,
+      "hotPath": false,
+      "prodRequestCount": null,
+      "crownJewelScore": null,
+      "crownJewelTier": null,
+      "crownJewelFactors": null,
+      "cloneClusterId": null,
+      "cloneClusterSize": null,
+      "provenance": null,
+      "provenanceScore": null,
+      "typeNarrowed": null,
+      "strideCategory": null,
+      "personaScores": null,
+      "personaTopTwo": null,
+      "personaMaxName": null,
+      "personaMaxScore": null,
+      "reverseExposure": null,
+      "specMined": null,
+      "whyFired": {
+        "detector": "sast/concurrency-bug",
+        "ruleId": "concurrency-bug",
+        "parser": "pattern",
+        "evidence": {
+          "sinkSnippet": null,
+          "sourceSnippet": null,
+          "pathSteps": [],
+          "sanitizers": [],
+          "guards": []
+        },
+        "considered": {
+          "suppressionsApplied": [],
+          "suppressionsSkipped": [],
+          "reachabilityFilter": "unaffected",
+          "clusterCollapsed": false,
+          "typeNarrowed": false,
+          "crownJewelTier": null,
+          "mitigationVerdict": null
+        },
+        "scanner": {
+          "rulesetVersion": null,
+          "packHash": null,
+          "modelId": null
+        }
+      },
+      "adversaryTranscript": null,
+      "predictedBountyUsd": null,
+      "bountyConfidence": null,
+      "attackPlaybook": null
+    }
+  ],
+  "bundles": [],
+  "routes": [],
+  "components": [],
+  "suppressedCount": 0,
+  "blastRadiusSignals": {
+    "industry": "generic",
+    "industryConfidence": "low",
+    "jurisdictions": [],
+    "controls": [],
+    "estimatedUsers": 50,
+    "revenueIndicator": "pre-revenue",
+    "hasStripe": false,
+    "hasAuth": false,
+    "hasUserTable": false,
+    "hasPII": false,
+    "hasPHI": false,
+    "hasS3": false
+  },
+  "_v3": {
+    "counterfactual": {
+      "spofControls": [],
+      "controlsDetected": 26
+    },
+    "threatModel": {
+      "summary": {
+        "assetCount": 0,
+        "boundaryCount": 0,
+        "strideCounts": {
+          "spoofing": 0,
+          "tampering": 0,
+          "repudiation": 0,
+          "informationDisclosure": 0,
+          "denialOfService": 0,
+          "elevationOfPrivilege": 0
+        }
+      },
+      "assets": [],
+      "trustBoundaries": [],
+      "stride": {
+        "spoofing": [],
+        "tampering": [],
+        "repudiation": [],
+        "informationDisclosure": [],
+        "denialOfService": [],
+        "elevationOfPrivilege": []
+      }
+    },
+    "trustBoundaryDiagram": {
+      "mermaid": "flowchart LR\n  INTERNET((Internet))\n  APP[\"Application\"]\n  classDef sev_critical fill:#ffcccc,stroke:#a00,stroke-width:2px;\n  classDef sev_high fill:#ffe0b2,stroke:#c60,stroke-width:2px;\n  classDef sev_medium fill:#fff3cd,stroke:#a80;\n  classDef sev_low fill:#e8eaf6,stroke:#557;",
+      "nodes": [
+        {
+          "id": "INTERNET",
+          "kind": "external",
+          "label": "Internet"
+        },
+        {
+          "id": "APP",
+          "kind": "app",
+          "label": "Application"
+        }
+      ],
+      "edges": [],
+      "decorations": []
+    },
+    "calibrationDrift": {
+      "alarms": [],
+      "note": "no-feedback-data"
+    }
+  },
+  "annotatorErrors": []
+}
