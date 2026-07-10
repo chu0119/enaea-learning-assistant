@@ -1330,7 +1330,37 @@
                 volumeControl.appendChild(volumeSlider);
                 volumeControl.appendChild(volumeValue);
 
+                // 添加进度条和时间显示
+                const progressSection = document.createElement('div');
+                progressSection.className = 'enaea-video-progress';
+
+                const progressBar = document.createElement('div');
+                progressBar.className = 'enaea-progress-bar-container';
+                const progressFill = document.createElement('div');
+                progressFill.className = 'enaea-progress-bar';
+                progressFill.id = 'video-progress-fill';
+                progressFill.style.width = '0%';
+                progressBar.appendChild(progressFill);
+
+                const progressInfo = document.createElement('div');
+                progressInfo.className = 'enaea-progress-info';
+                const currentTime = document.createElement('span');
+                currentTime.id = 'video-current-time';
+                currentTime.textContent = '0:00';
+                const timeSeparator = document.createElement('span');
+                timeSeparator.textContent = ' / ';
+                const duration = document.createElement('span');
+                duration.id = 'video-duration';
+                duration.textContent = '0:00';
+                progressInfo.appendChild(currentTime);
+                progressInfo.appendChild(timeSeparator);
+                progressInfo.appendChild(duration);
+
+                progressSection.appendChild(progressBar);
+                progressSection.appendChild(progressInfo);
+
                 videoControls.appendChild(controlButtons);
+                videoControls.appendChild(progressSection);
                 videoControls.appendChild(speedControl);
                 videoControls.appendChild(volumeControl);
                 videoCard.appendChild(videoControls);
@@ -1563,13 +1593,223 @@
 
             function updatePanelDisplay() {
                 updatePlayButton();
+                updateProgressDisplay();
+                updateVolumeDisplay();
+                updateSpeedDisplay();
+            }
+
+            // ==================== 视频状态同步 ====================
+            function initVideoStateSync() {
+                // 监听所有视频元素的事件
+                function attachVideoListeners(video) {
+                    if (video._enaeaListenersAttached) return;
+                    video._enaeaListenersAttached = true;
+
+                    // 播放状态变化
+                    video.addEventListener('play', function() {
+                        updatePlayButton();
+                        addLog('视频开始播放', 'info');
+                    });
+
+                    video.addEventListener('pause', function() {
+                        updatePlayButton();
+                        addLog('视频已暂停', 'info');
+                    });
+
+                    video.addEventListener('ended', function() {
+                        updatePlayButton();
+                        addLog('视频播放完成', 'success');
+                    });
+
+                    // 时间更新
+                    video.addEventListener('timeupdate', function() {
+                        updateTimeDisplay(video);
+                    });
+
+                    // 音量变化
+                    video.addEventListener('volumechange', function() {
+                        updateVolumeFromVideo(video);
+                    });
+
+                    // 速度变化
+                    video.addEventListener('ratechange', function() {
+                        updateSpeedFromVideo(video);
+                    });
+
+                    // 加载状态
+                    video.addEventListener('loadedmetadata', function() {
+                        updateTimeDisplay(video);
+                    });
+                }
+
+                // 附加监听器到现有视频
+                document.querySelectorAll('video').forEach(attachVideoListeners);
+
+                // 使用 MutationObserver 监听新视频元素
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        mutation.addedNodes.forEach(function(node) {
+                            if (node.nodeType === 1) {
+                                if (node.tagName === 'VIDEO') {
+                                    attachVideoListeners(node);
+                                }
+                                node.querySelectorAll?.('video').forEach(attachVideoListeners);
+                            }
+                        });
+                    });
+                });
+
+                observer.observe(document.body, { childList: true, subtree: true });
+
+                // 定期检查 iframe 中的视频
+                setInterval(function() {
+                    document.querySelectorAll('iframe').forEach(function(iframe) {
+                        try {
+                            const doc = iframe.contentDocument || iframe.contentWindow?.document;
+                            if (doc) {
+                                doc.querySelectorAll('video').forEach(attachVideoListeners);
+                            }
+                        } catch(e) {}
+                    });
+                }, 2000);
+            }
+
+            // 更新时间显示
+            function updateTimeDisplay(video) {
+                const currentTimeEl = document.getElementById('video-current-time');
+                const durationEl = document.getElementById('video-duration');
+                const progressFill = document.getElementById('video-progress-fill');
+
+                if (currentTimeEl && video) {
+                    currentTimeEl.textContent = formatTime(video.currentTime);
+                }
+                if (durationEl && video) {
+                    durationEl.textContent = formatTime(video.duration);
+                }
+                if (progressFill && video && video.duration) {
+                    const percent = (video.currentTime / video.duration) * 100;
+                    progressFill.style.width = percent + '%';
+                }
+            }
+
+            // 从视频同步音量到GUI
+            function updateVolumeFromVideo(video) {
+                const volumeSlider = document.getElementById('volume-slider');
+                const volumeIcon = document.getElementById('volume-icon');
+                const volumeValue = document.getElementById('volume-value');
+
+                if (!volumeSlider) return;
+
+                const volume = Math.round(video.volume * 100);
+                const muted = video.muted;
+
+                volumeSlider.value = muted ? 0 : volume;
+
+                if (muted || volume === 0) {
+                    volumeIcon.textContent = '🔇';
+                    volumeValue.textContent = '静音';
+                } else if (volume < 50) {
+                    volumeIcon.textContent = '🔉';
+                    volumeValue.textContent = volume + '%';
+                } else {
+                    volumeIcon.textContent = '🔊';
+                    volumeValue.textContent = volume + '%';
+                }
+
+                // 同步自动静音开关
+                const autoMuteCheckbox = document.getElementById('setting-auto-mute');
+                if (autoMuteCheckbox) {
+                    autoMuteCheckbox.checked = muted;
+                }
+            }
+
+            // 从视频同步速度到GUI
+            function updateSpeedFromVideo(video) {
+                const speed = video.playbackRate;
+                document.querySelectorAll('.enaea-speed-btn').forEach(function(btn) {
+                    btn.classList.toggle('active', parseInt(btn.dataset.speed) === speed);
+                });
+            }
+
+            // 更新进度显示
+            function updateProgressDisplay() {
+                const video = document.querySelector('video');
+                const courseInfo = document.getElementById('course-info');
+                const progressText = document.getElementById('progress-text');
+
+                if (!video) return;
+
+                // 获取课程信息
+                const items = getProgressItems();
+                if (items.length > 0) {
+                    const completed = items.filter(function(i) { return i.progress === 100; }).length;
+                    const total = items.length;
+                    const percent = Math.round((completed / total) * 100);
+
+                    if (courseInfo) {
+                        courseInfo.textContent = completed + '/' + total + ' 课程';
+                    }
+                    if (progressText) {
+                        progressText.textContent = percent + '%';
+                    }
+                }
+            }
+
+            // 获取进度项
+            function getProgressItems() {
+                var items = [];
+                document.querySelectorAll('.cvtb-MCK-CsCt-studyProgress').forEach(function(el) {
+                    var match = el.textContent.trim().match(/^(\\d{1,3})%$/);
+                    if (match) {
+                        var li = el.closest('li');
+                        items.push({
+                            el: el,
+                            progress: parseInt(match[1]),
+                            title: li?.querySelector('.cvtb-MCK-CsCt-title')?.textContent?.trim(),
+                            isActive: li?.className?.includes('current')
+                        });
+                    }
+                });
+                return items;
+            }
+
+            // 更新音量显示
+            function updateVolumeDisplay() {
+                var video = document.querySelector('video');
+                if (video) {
+                    updateVolumeFromVideo(video);
+                }
+            }
+
+            // 更新速度显示
+            function updateSpeedDisplay() {
+                var video = document.querySelector('video');
+                if (video) {
+                    updateSpeedFromVideo(video);
+                }
+            }
+
+            // 格式化时间
+            function formatTime(seconds) {
+                if (isNaN(seconds)) return '0:00';
+                var mins = Math.floor(seconds / 60);
+                var secs = Math.floor(seconds % 60);
+                return mins + ':' + (secs < 10 ? '0' : '') + secs;
             }
 
             function initGUI() {
                 if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', function() { setTimeout(createPanel, 1000); });
+                    document.addEventListener('DOMContentLoaded', function() {
+                        setTimeout(function() {
+                            createPanel();
+                            initVideoStateSync();
+                        }, 1000);
+                    });
                 } else {
-                    setTimeout(createPanel, 1000);
+                    setTimeout(function() {
+                        createPanel();
+                        initVideoStateSync();
+                    }, 1000);
                 }
             }
 
