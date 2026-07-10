@@ -1,7 +1,7 @@
 {
-  "scanId": "dc15950c-23e0-4136-8ee1-84f33179e5a4",
-  "startedAt": "2026-07-10T06:48:17.838Z",
-  "durationMs": 100,
+  "scanId": "65df8d67-cdfc-422c-9e9e-b0d3ca96ebc9",
+  "startedAt": "2026-07-10T06:48:43.687Z",
+  "durationMs": 104,
   "scanned": {
     "files": 1,
     "lines": 0
