@@ -1,7 +1,7 @@
 {
-  "scanId": "f8bfa94f-ccb4-453a-b0f7-8dbc7abbcb94",
-  "startedAt": "2026-07-10T07:06:54.053Z",
-  "durationMs": 225,
+  "scanId": "457b362e-d767-4e33-bc4c-ba9e867a93ce",
+  "startedAt": "2026-07-10T07:15:38.216Z",
+  "durationMs": 255,
   "scanned": {
     "files": 5,
     "lines": 0
@@ -547,7 +547,7 @@
   "_v3": {
     "counterfactual": {
       "spofControls": [],
-      "controlsDetected": 73
+      "controlsDetected": 82
     },
     "threatModel": {
       "summary": {
