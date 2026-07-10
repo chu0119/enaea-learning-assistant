@@ -185,5 +185,16 @@
     "low": 0,
     "kev": 0,
     "ids": []
+  },
+  {
+    "timestamp": "2026-07-10T06:49:06.381Z",
+    "label": "scan",
+    "total": 0,
+    "critical": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0,
+    "kev": 0,
+    "ids": []
   }
 ]

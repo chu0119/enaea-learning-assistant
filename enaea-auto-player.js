@@ -1,19 +1,21 @@
 // ==UserScript==
-// @name ENAEA Learning Assistant
-// @namespace http://tampermonkey.net/
-// @version 9.0
-// @description Online learning platform assistant - streamlines course navigation and video playback
-// @author Learning Tech
-// @match https://study.enaea.edu.cn/*
-// @match https://*.ttcdw.cn/*
-// @match https://*.ertcloud.net/*
-// @grant GM_getValue
-// @grant GM_setValue
-// @grant GM_setClipboard
-// @grant GM_notification
-// @grant GM_addStyle
-// @run-at document-idle
-// @license MIT
+// @name         ENAEA Learning Assistant
+// @namespace    https://github.com/chu0119/enaea-learning-assistant
+// @version      9.0
+// @description  Online learning platform assistant - streamlines course navigation and video playback
+// @author       Learning Tech
+// @match        https://study.enaea.edu.cn/*
+// @match        https://*.ttcdw.cn/*
+// @match        https://*.ertcloud.net/*
+// @grant        GM_getValue
+// @grant        GM_setValue
+// @grant        GM_setClipboard
+// @grant        GM_notification
+// @grant        GM_addStyle
+// @run-at       document-idle
+// @license      MIT
+// @homepage     https://github.com/chu0119/enaea-learning-assistant
+// @supportURL   https://github.com/chu0119/enaea-learning-assistant/issues
 // ==/UserScript==
 
 /**
